@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="comtam110hamnghiModelStoreContainer" CdmEntityContainer="comtam110hamnghiEntities">
+    <EntitySetMapping Name="CTDONDATHANGs">
+      <EntityTypeMapping TypeName="comtam110hamnghiModel.CTDONDATHANG">
+        <MappingFragment StoreEntitySet="CTDONDATHANG">
+          <ScalarProperty Name="idSP" ColumnName="idSP" />
+          <ScalarProperty Name="idHD" ColumnName="idHD" />
+          <ScalarProperty Name="slSP" ColumnName="slSP" />
+          <ScalarProperty Name="idDDH" ColumnName="idDDH" />
+          <ScalarProperty Name="idNV" ColumnName="idNV" />
+          <ScalarProperty Name="idKM" ColumnName="idKM" />
+          <ScalarProperty Name="idKhach" ColumnName="idKhach" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CTHOADONs">
+      <EntityTypeMapping TypeName="comtam110hamnghiModel.CTHOADON">
+        <MappingFragment StoreEntitySet="CTHOADON">
+          <ScalarProperty Name="idSP" ColumnName="idSP" />
+          <ScalarProperty Name="idHD" ColumnName="idHD" />
+          <ScalarProperty Name="slSP" ColumnName="slSP" />
+          <ScalarProperty Name="idNV" ColumnName="idNV" />
+          <ScalarProperty Name="idKM" ColumnName="idKM" />
+          <ScalarProperty Name="idKhach" ColumnName="idKhach" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DONDATHANGs">
+      <EntityTypeMapping TypeName="comtam110hamnghiModel.DONDATHANG">
+        <MappingFragment StoreEntitySet="DONDATHANG">
+          <ScalarProperty Name="idDDH" ColumnName="idDDH" />
+          <ScalarProperty Name="ngayxuatDDH" ColumnName="ngayxuatDDH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DVHOPTACs">
+      <EntityTypeMapping TypeName="comtam110hamnghiModel.DVHOPTAC">
+        <MappingFragment StoreEntitySet="DVHOPTAC">
+          <ScalarProperty Name="idDVHT" ColumnName="idDVHT" />
+          <ScalarProperty Name="tenDVHT" ColumnName="tenDVHT" />
+          <ScalarProperty Name="motaDVHT" ColumnName="motaDVHT" />
+          <ScalarProperty Name="diachi" ColumnName="diachi" />
+          <ScalarProperty Name="sodienthoai" ColumnName="sodienthoai" />
+          <ScalarProperty Name="hrefDVHT" ColumnName="hrefDVHT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HOADONs">
+      <EntityTypeMapping TypeName="comtam110hamnghiModel.HOADON">
+        <MappingFragment StoreEntitySet="HOADON">
+          <ScalarProperty Name="idHD" ColumnName="idHD" />
+          <ScalarProperty Name="ngayxuatHD" ColumnName="ngayxuatHD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KHACHHANGs">
+      <EntityTypeMapping TypeName="comtam110hamnghiModel.KHACHHANG">
+        <MappingFragment StoreEntitySet="KHACHHANG">
+          <ScalarProperty Name="idKhach" ColumnName="idKhach" />
+          <ScalarProperty Name="idLoai" ColumnName="idLoai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KHUYENMAIs">
+      <EntityTypeMapping TypeName="comtam110hamnghiModel.KHUYENMAI">
+        <MappingFragment StoreEntitySet="KHUYENMAI">
+          <ScalarProperty Name="idKM" ColumnName="idKM" />
+          <ScalarProperty Name="tenKM" ColumnName="tenKM" />
+          <ScalarProperty Name="motaKM" ColumnName="motaKM" />
+          <ScalarProperty Name="giatriKM" ColumnName="giatriKM" />
+          <ScalarProperty Name="startKM" ColumnName="startKM" />
+          <ScalarProperty Name="endKM" ColumnName="endKM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LIENKETs">
+      <EntityTypeMapping TypeName="comtam110hamnghiModel.LIENKET">
+        <MappingFragment StoreEntitySet="LIENKET">
+          <ScalarProperty Name="idLK" ColumnName="idLK" />
+          <ScalarProperty Name="tenLK" ColumnName="tenLK" />
+          <ScalarProperty Name="hrefLK" ColumnName="hrefLK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOAIKHACHHANGs">
+      <EntityTypeMapping TypeName="comtam110hamnghiModel.LOAIKHACHHANG">
+        <MappingFragment StoreEntitySet="LOAIKHACHHANG">
+          <ScalarProperty Name="idLoai" ColumnName="idLoai" />
+          <ScalarProperty Name="tenLoai" ColumnName="tenLoai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOAISPs">
+      <EntityTypeMapping TypeName="comtam110hamnghiModel.LOAISP">
+        <MappingFragment StoreEntitySet="LOAISP">
+          <ScalarProperty Name="idLoai" ColumnName="idLoai" />
+          <ScalarProperty Name="tenLoai" ColumnName="tenLoai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NHANVIENs">
+      <EntityTypeMapping TypeName="comtam110hamnghiModel.NHANVIEN">
+        <MappingFragment StoreEntitySet="NHANVIEN">
+          <ScalarProperty Name="idNV" ColumnName="idNV" />
+          <ScalarProperty Name="tenNV" ColumnName="tenNV" />
+          <ScalarProperty Name="diachi" ColumnName="diachi" />
+          <ScalarProperty Name="sodienthoai" ColumnName="sodienthoai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QUANGCAOs">
+      <EntityTypeMapping TypeName="comtam110hamnghiModel.QUANGCAO">
+        <MappingFragment StoreEntitySet="QUANGCAO">
+          <ScalarProperty Name="idQC" ColumnName="idQC" />
+          <ScalarProperty Name="tenQC" ColumnName="tenQC" />
+          <ScalarProperty Name="vitriQC" ColumnName="vitriQC" />
+          <ScalarProperty Name="imgQC" ColumnName="imgQC" />
+          <ScalarProperty Name="hrefLK" ColumnName="hrefLK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SANPHAMs">
+      <EntityTypeMapping TypeName="comtam110hamnghiModel.SANPHAM">
+        <MappingFragment StoreEntitySet="SANPHAM">
+          <ScalarProperty Name="idSP" ColumnName="idSP" />
+          <ScalarProperty Name="ten" ColumnName="ten" />
+          <ScalarProperty Name="gia" ColumnName="gia" />
+          <ScalarProperty Name="mota" ColumnName="mota" />
+          <ScalarProperty Name="img" ColumnName="img" />
+          <ScalarProperty Name="anhien" ColumnName="anhien" />
+          <ScalarProperty Name="idLoai" ColumnName="idLoai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="THONGTINKHACHes">
+      <EntityTypeMapping TypeName="comtam110hamnghiModel.THONGTINKHACH">
+        <MappingFragment StoreEntitySet="THONGTINKHACH">
+          <ScalarProperty Name="hoten" ColumnName="hoten" />
+          <ScalarProperty Name="diachi" ColumnName="diachi" />
+          <ScalarProperty Name="sodienthoai" ColumnName="sodienthoai" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="pwd" ColumnName="pwd" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="dob" ColumnName="dob" />
+          <ScalarProperty Name="charges" ColumnName="charges" />
+          <ScalarProperty Name="idKhach" ColumnName="idKhach" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

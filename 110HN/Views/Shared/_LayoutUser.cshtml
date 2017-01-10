@@ -1,0 +1,278 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Ẩm thực hàm nghi</title>
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <link href="~/Content/mobile_nav.css" rel="stylesheet" />
+    <link href="~/Content/childaction.css" rel="stylesheet" />
+    <script src="~/Scripts/mobile_nav.js"></script>
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Scripts/myjs.js"></script>>
+    <link href="~/Content/facebookAPi.css" rel="stylesheet" />
+    <script>
+        $("a.cong").click(function () {
+        });
+        function AddToCart(idSP) {
+            $.ajax({
+                url: '/Cart/AddCart',
+                data: {id : idSP},
+                success: function (data) {
+                    $("div.content div.content-dynamic").html(data);
+                }
+            });
+        }
+    </script>
+    <style>
+        div.videobackground {
+            margin : 0 ;
+            padding : 0 ;
+            left : 0;
+            top : 0 ;
+            position:fixed ;
+        }
+        .video {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            z-index: 1;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            opacity: 0.7;
+            transition: 0.8s;
+            -webkit-filter: blur(15px);
+            -moz-filter: blur(15px);
+            -o-filter: blur(15px);
+            filter: blur(15px);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="videoBackground">
+        <video class="video" autoplay="autoplay" loop="loop" muted="">
+            <source src="~/Content/demo.MP4" type="video/mp4" />
+        </video>
+    </div>
+    <div id="mySidenav" class="sidenav" style="z-index:99999999999; font-family:'UVN Ben Xuan';">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div style="color:white;font-size:25px;text-align:center;">
+            @Html.Action("ShowCurrentUser","KhachHang")
+        </div>
+        <a href="@Url.Action("Index","AmThucHamNghi")">Trang chủ</a>
+        <a href="@Url.Action("MonAn","AmThucHamNghi")">Món ăn</a>
+        <a href="@Url.Action("Register","KhachHang")">Đăng ký</a>
+        <a href="@Url.Action("ShowCart","Cart")">Giỏ hàng</a>
+        <a href="#">Khuyến Mãi</a>
+        <a href="@Url.Action("Index","Admin")">Quản trị</a>
+        <a href="@Url.Action("LienLac","AmThucHamNghi")">Liên hệ</a>
+    </div>
+    <!-- Use any element to open the sidenav -->
+
+    <div class="side-nav-bar" style="height:40px;width:100%;top:0;left:0;position:fixed;z-index:99;background-color:#333;">
+        <img style="cursor:pointer" onclick="openNav()" src="../Content/Images/mobile_menu.png" width="40" />
+    </div>
+    <div onclick="openNav()" style="cursor:pointer;margin-top:0px;margin-left:40px;font-family:'UVN Ben Xuan';color:#fff;z-index:999;left:0;top:0;position:fixed">
+        <div style="font-size:20px;margin-top:10px;margin-left:10px;">Hello from the underside</div>
+        <div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="main" style="margin-top:40px;">
+
+
+
+        @using (Html.BeginForm("TimKiem", "AmThucHamNghi", null, FormMethod.Post))
+        {
+            <div class="search-module">
+                <input id="search" type="search" name="keyword"/>
+                <input id="btn" type="submit" value="Search"/>
+            </div>
+        }
+
+
+
+
+
+        <div class="slider">
+            <div class="top5item">
+                <img  style="box-shadow:2px 2px 2px 2px black" src="../Content/Images/page_cover.png" alt="com tam 110 ham nghi's cover background image" />
+            </div>
+            <div class="rss" style="width: 30%; float: left;"><!-- start feedwind code -->
+                <!-- start feedwind code -->
+                <script type="text/javascript" src="https://feed.mikle.com/js/fw-loader.js" data-fw-param="?widget_parameter=%7B%22sources%22%3A%5B%7B%22source%22%3A%22http%3A%2F%2Fafamily.vn%2Fan-ngon.rss%22%2C%22type%22%3A%22RSS%22%7D%5D%2C%22name%22%3A%22%22%2C%22width%22%3A0%2C%22height%22%3A%22400%22%2C%22height_by_article%22%3A0%2C%22target%22%3A%22_blank%22%2C%22font%22%3A%22Arial%2C%20Helvetica%2C%20sans-serif%22%2C%22title_font_size%22%3A%2216%22%2C%22item_title_font_size%22%3A%2216%22%2C%22item_description_font_size%22%3A%2212%22%2C%22border%22%3A%22on%22%2C%22css_url%22%3A%22%22%2C%22responsive%22%3A%22on%22%2C%22text_direction%22%3A%22left%22%2C%22text_alignment%22%3A%22left%22%2C%22corner%22%3A%22rounded%22%2C%22scroll%22%3A%22on%22%2C%22auto_scroll%22%3A%22on%22%2C%22auto_scroll_direction%22%3A%22up%22%2C%22auto_scroll_step_speed%22%3A%223%22%2C%22auto_scroll_mc_speed%22%3A%2220%22%2C%22sort%22%3A%22new%22%2C%22title%22%3A%22on%22%2C%22title_sentence%22%3A%22%C4%82n%20ngon%20m%E1%BB%95i%20ng%C3%A0y%20v%E1%BB%9Bi%20AFamily%22%2C%22title_link%22%3A%22%22%2C%22title_bgcolor%22%3A%22%23ff195f%22%2C%22title_color%22%3A%22%23505659%22%2C%22title_bgimage%22%3A%22%22%2C%22item_bgcolor%22%3A%22%23ffffff%22%2C%22item_bgimage%22%3A%22%22%2C%22item_title_length%22%3A%2255%22%2C%22item_title_color%22%3A%22%232e7ec8%22%2C%22item_border_bottom%22%3A%22on%22%2C%22item_description%22%3A%22both%22%2C%22item_link%22%3A%22on%22%2C%22item_description_length%22%3A%22100%22%2C%22item_description_color%22%3A%22%23505659%22%2C%22item_date%22%3A%22on%22%2C%22item_date_format%22%3A%22%25b%20%25e%2C%20%25Y%20%25k%3A%25M%22%2C%22item_date_timezone%22%3A%22%22%2C%22item_description_style%22%3A%22thumbnail%22%2C%22item_thumbnail%22%3A%22crop%22%2C%22item_thumbnail_selection%22%3A%22auto%22%2C%22article_num%22%3A%2215%22%2C%22item_player%22%3A%22youtube%22%2C%22keyword_inc%22%3A%22%22%2C%22keyword_exc%22%3A%22%22%7D"></script> <!-- end feedwind code -->
+            </div>
+        </div>
+        <div class="account-panel">
+            <!--Account Panel PartialView-->
+                    <div class="account-panel-form">@Html.Action("AccountPanel", "AmThucHamNghi")</div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <div class="left-nav">
+            <ul>
+                <li><a href="@Url.Action("Index","AmThucHamNghi")">Trang chủ</a></li>
+                <li><a href="@Url.Action("MonAn","AmThucHamNghi")">Món ăn</a></li>
+                <li><a href="#">Ẩm thực</a></li>
+                <li><a href="@Url.Action("ShowCart","Cart")">Giỏ hàng</a></li>
+                <li><a href="@Url.Action("LienLac","AmThucHamNghi")">Liên hệ</a></li>
+            </ul>
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <div class="content">
+            <div class="content-dynamic">
+                <!--Content show here-->
+                @RenderBody()
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <div class="ads-right">
+            <!--QC partialview load here-->
+            @Html.Action("LoadRightAds", "AmThucHamNghi")
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <div class="linked-side">
+            <div class="linked-side-section">
+                @Html.Action("LoadLinkedSite", "AmThucHamNghi")
+
+                @Html.Action("LoadLinkedCoopUnit", "AmThucHamNghi")
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+        <div class="ads-bottom">
+            <div class="ads-item">
+                <div><a href="#"><img src="../Content/Images/QC/qc5.png" /></a></div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <footer class="website-info">
+            <p>Cơm tấm - 110 Hàm Nghi P.Bến Nghé , Quận 1 , TP . Hồ Chí Minh</p>
+            <p>Số điện thoại : 0128 5499 521</p>
+        </footer>
+        <footer class="website-copyright">
+            <p>Copyright &copy; 2016 - Phúc Nguyễn</p>
+            <p>Email: xsensevwx@gmail.com</p>
+        </footer>
+
+
+
+
+
+        
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+</html>

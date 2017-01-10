@@ -1,0 +1,80 @@
+﻿<style>
+    div.auth {
+        top:0;
+        left:0;
+        z-index:999999;
+        position:fixed;
+        width:100%;
+        height:100%;
+        background-color:#555;
+        color:white;
+        font-size:30px;
+    }
+    div.panel {
+        width:30%;
+        margin-left:35%;
+        background-color:#333;
+        border-radius:15px;
+        opacity:0.7;
+        padding-bottom:10px;
+    }
+    div.panel:hover {
+        transition:1s;
+        opacity:1.0;
+        box-shadow: 2px 2px 2px 2px #00ff96;
+    }
+    table.auth-admin {
+        width:100%;
+        margin-top:300px;
+    }
+        table.auth-admin tr {
+        }
+        table.auth-admin td.a {
+            text-align:center;
+        }
+        table.auth-admin td.b {
+            text-align:left;
+        }
+        table.auth-admin td.b input {
+            height:25px;
+            border-radius:5px;
+            box-shadow:1px 1px 1px 1px black;
+        }
+    div.animated-logo {
+        position:fixed;
+        z-index:99999;
+        top:250px;
+        left:350px;
+    }
+</style>
+<link href="~/Content/Admin/animatedlogo.css" rel="stylesheet" />
+<div class="auth">
+    <div class="animated-logo">
+        <div class="cssload-loader">
+            <div class="cssload-inner cssload-one"></div>
+            <div class="cssload-inner cssload-two"></div>
+            <div class="cssload-inner cssload-three"></div>
+        </div>
+    </div>
+    <div><p style="color:green;text-align:center;">@ViewBag.Thongbao</p></div>
+    <div class="panel">
+        <table class="auth-admin" border="0">
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary(true)
+                <tr>
+                    <td class="a">Admin ID</td>
+                    <td class="b"><input type="text" name="id" value="" /></td>
+                </tr>
+                <tr>
+                    <td class="a">Password</td>
+                    <td class="b"><input type="password" name="pwd" value="" /></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input  style="background-color:#00ff96;border-radius:5px; width:35%;height:30px;" type="submit" value="Đăng nhập" /></td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

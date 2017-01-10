@@ -1,0 +1,74 @@
+﻿@model DALTWEB_110HN.Models.QUANTRIVIEN
+
+@{
+    ViewBag.Title = "deleteQTV";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    div.alert {
+        width: 50%;
+        margin-left: 25%;
+    }
+
+        div.alert input#btn {
+            background-color: #00ff96;
+            box-shadow: 1px 1px 1px 1px black;
+            border-radius: 5px;
+        }
+
+    dd {
+        color: #00ff96;
+        font-style: normal;
+    }
+</style>
+<style>
+    div.ctn {
+        width: 50%;
+        margin-left: 10%;
+        margin-top: 100px;
+        text-align: left;
+    }
+</style>
+<div class="ctn">
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>QUANTRIVIEN</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.idQTV)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.idQTV)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.username)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.username)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.pwd)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.pwd)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input id="btn" type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Quay trở lại", "QuanTriVien")
+            </div>
+        }
+    </div>
+</div>

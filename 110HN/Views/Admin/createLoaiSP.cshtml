@@ -1,0 +1,57 @@
+﻿@model DALTWEB_110HN.Models.LOAISP
+
+@{
+    ViewBag.Title = "createLoaiSP";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    div.create {
+        width: 80%;
+        margin-left: 10%;
+    }
+
+        div.create input#btn {
+            background-color: #00ff96;
+            box-shadow: 1px 1px 1px 1px black;
+            border-radius: 5px;
+        }
+
+        div.create div#btn {
+            margin-top: 10px;
+            width: 130px;
+            text-align: center;
+            background-color: #333;
+            box-shadow: 1px 1px 1px 1px black;
+            border-radius: 5px;
+        }
+</style>
+<div class="create">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>LOAISP</h4>
+            <hr />
+            @Html.ValidationSummary(true)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.tenLoai, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.tenLoai)
+                    @Html.ValidationMessageFor(model => model.tenLoai)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Quay trở lại", "LoaiSP")
+    </div>
+</div>

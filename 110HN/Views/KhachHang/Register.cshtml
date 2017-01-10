@@ -1,0 +1,91 @@
+﻿@model DALTWEB_110HN.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+@using (Html.BeginForm("Register", "KhachHang", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="register-form">
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model=>model.idKhach)
+        <div style="width:100%;text-align:center;font-family:benxuan;font-size:50px;color:white;">Đăng ký tài khoản</div>        
+        <div class="form-group">
+            <div class="register-hd">Tên đăng nhập</div>
+            <div class="inputcontrol">
+                @Html.EditorFor(model => model.username)
+                @Html.ValidationMessageFor(model => model.username)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="register-hd">Mật khẩu</div>
+            <div class="inputcontrol">
+                <input type="password" name="pwd" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="register-hd">Nhập lại mật khẩu</div>
+            <div class="inputcontrol">
+                <input type="password" name="rpwd" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="register-hd">Họ và tên</div>
+            <div class="inputcontrol">
+                @Html.EditorFor(model => model.hoten)
+                @Html.ValidationMessageFor(model => model.hoten)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="register-hd">Địa chỉ</div>
+            <div class="inputcontrol">
+                @Html.EditorFor(model => model.diachi)
+                @Html.ValidationMessageFor(model => model.diachi)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="register-hd">Số điện thoại</div>
+            <div class="inputcontrol">
+                @Html.EditorFor(model => model.sodienthoai)
+                @Html.ValidationMessageFor(model => model.sodienthoai)
+            </div>
+        </div>
+
+        
+
+        <div class="form-group">
+            <div class="register-hd">Email</div>
+            <div class="inputcontrol">
+                @Html.EditorFor(model => model.email)
+                @Html.ValidationMessageFor(model => model.email)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="register-hd">Ngày sinh (dd/mm/YYYY)</div>
+            <div class="inputcontrol">
+                <input type="date" name="dob"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="inputcontrol">
+                @Html.HiddenFor(model=>model.charges)
+            </div>
+        </div>
+        <div style="margin-top:10px;color:white;font-family:benxuan;font-size:25px;font-style:italic;" ><input type="checkbox" name="agree"/> Tôi đồng ý với các điều khoản trên</div>
+        <div style="width:100%;text-align:center;font-family:benxuan;font-size:30px;color:#00ff90;">@ViewBag.Error</div>
+        <div style="margin-top:20px;" class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Đăng ký" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

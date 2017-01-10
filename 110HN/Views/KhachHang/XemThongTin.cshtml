@@ -1,0 +1,34 @@
+﻿@model DALTWEB_110HN.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "XemThongTin";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<div class="info">
+    <table class="info">
+        <tr>
+            <td class="hd">Họ và tên :</td>
+            <td>@Model.hoten</td>
+        </tr>
+        <tr>
+            <td class ="hd">Địa chỉ :</td>
+            <td>@Model.diachi</td>
+        </tr>
+        <tr>
+            <td class="hd">Số điện thoại :</td>
+            <td>@Model.sodienthoai</td>
+        </tr>
+        <tr>
+            <td class="hd">Email :</td>
+            <td>@Model.email</td>
+        </tr>
+        <tr>
+            <td class="hd">Ngày Sinh :</td>
+            <td>@Model.dob.Value.ToShortDateString()</td>
+        </tr>
+        <tr>
+            <td class="hd">Tích lũy :</td>
+            <td>@Model.charges.Value.ToString("N0")</td>
+        </tr>
+    </table>
+</div>

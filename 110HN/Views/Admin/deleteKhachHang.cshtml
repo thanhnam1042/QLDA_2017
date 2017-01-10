@@ -1,0 +1,122 @@
+﻿@model DALTWEB_110HN.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "deleteKhachHang";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    div.alert {
+        width: 50%;
+        margin-left: 25%;
+    }
+
+        div.alert input#btn {
+            background-color: #00ff96;
+            box-shadow: 1px 1px 1px 1px black;
+            border-radius: 5px;
+        }
+
+    dd {
+        color: #00ff96;
+        font-style: normal;
+    }
+</style>
+<style>
+    div.ctn {
+        width: 50%;
+        margin-left: 10%;
+        margin-top: 100px;
+        text-align: left;
+    }
+</style>
+<div class="ctn">
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>KHACHHANG</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.idKhach)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.idKhach)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.hoten)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.hoten)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.diachi)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.diachi)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.sodienthoai)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.sodienthoai)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.username)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.username)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.pwd)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.pwd)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.dob)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.dob)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.charges)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.charges)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input id="btn" type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "KhachHang")
+            </div>
+        }
+    </div>
+</div>

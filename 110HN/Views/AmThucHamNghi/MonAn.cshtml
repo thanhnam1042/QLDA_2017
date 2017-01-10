@@ -1,0 +1,62 @@
+﻿@using DALTWEB_110HN.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<SANPHAM>
+@{
+    ViewBag.Title = "MonAn";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<script>
+
+    function AddToCart(MaSP) {
+        var url = "/Cart/AddCart";
+        $.post(url, { masp: MaSP }, function () {
+            alert("OK it's done");
+        });
+    }
+</script>
+<div class="menu-monan">
+    @foreach (var item in Model)
+    {
+        <div id="moman-@item.idSP" class="monan">
+            <img src="../HinhSP/@item.img" />
+            <div id="name">@item.ten</div>
+            <div id="price">Giá : @item.gia.Value.ToString("N0") vnđ</div>
+            <div id="desc">@item.mota</div>
+            <div id="btn"><a id="pay" href="#"><img class="monan-btn" src="../Content/Images/paynow.png" /></a><a id="cart" href="javascript:AddToCart(@item.idSP);"><img class="monan-btn" src="../Content/Images/addtocart.png" /></a></div>
+        </div>
+    }
+    <div style="font-family:benxuan;font-size:25px;color:white;clear:both">Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount</div>
+    <div class="index-select">
+        @Html.PagedListPager(Model, Page => Url.Action("MonAn", new {page = Page }))
+    </div>
+    <style>
+        div.index-select ul {
+            width:50%;
+            text-align:center;
+        }
+        div.index-select li {
+            float: left;
+            display: inline;
+            margin: 3px;
+            box-shadow: 1px 1px 1px 1px black;
+            width: 30px;
+            text-align: center;
+            border-radius:5px;
+            height: 30px;
+        }
+        div.index-select li:hover {
+            cursor:pointer;
+            transition:0.4s;
+            background-color:#ff195f;
+        }
+            div.index-select li a {
+                color: white;
+                font-family:'UVN Ben Xuan';
+                font-size: 30px;
+                text-decoration: none;
+                width: 30px;
+                height: 30px;
+            }
+    </style>
+</div>
+

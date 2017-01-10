@@ -1,0 +1,90 @@
+﻿@using DALTWEB_110HN.Models
+@using PagedList.Mvc
+@model PagedList.PagedList<QUANTRIVIEN>
+
+@{
+    ViewBag.Title = "QuanTriVien";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style>
+    table.qtv {
+        font-family: 'Times New Roman';
+        font-size: 20px;
+        width: 98%;
+        margin-left: 1%;
+        margin-top: 30px;
+    }
+</style>
+<div style="background-color: #00ff96; border-radius: 10px; box-shadow: 1px 1px 1px 1px black; text-align: center; width: 150px; margin-top: 50px; margin-left: 5%">
+    <p><a style="color:black;" href="@Url.Action("createQTV","Admin")">Tạo mới</a></p>
+</div>
+<table class="qtv" border="1">
+    <tr>
+        <th>
+            idQTV
+        </th>
+        <th>
+            username
+        </th>
+        <th>
+            pwd
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.idQTV
+        </td>
+        <td>
+            @item.username
+        </td>
+        <td>
+            @item.pwd
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "editQTV", new {id = item.idQTV }) |
+            @Html.ActionLink("Delete", "deleteQTV", new { id = item.idQTV })
+        </td>
+    </tr>
+}
+
+</table>
+<div style="font-family:benxuan;font-size:25px;color:white;">Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount</div>
+<div class="index-select">
+    @Html.PagedListPager(Model, Page => Url.Action("QuanTriVien", new { page = Page }))
+</div>
+<style>
+    div.index-select ul {
+        width: 50%;
+        text-align: center;
+    }
+
+    div.index-select li {
+        float: left;
+        display: inline;
+        margin: 3px;
+        box-shadow: 1px 1px 1px 1px black;
+        width: 30px;
+        text-align: center;
+        border-radius: 5px;
+        height: 30px;
+    }
+
+        div.index-select li:hover {
+            cursor: pointer;
+            transition: 0.4s;
+            background-color: #ff195f;
+        }
+
+        div.index-select li a {
+            color: white;
+            font-family: 'UVN Ben Xuan';
+            font-size: 30px;
+            text-decoration: none;
+            width: 30px;
+            height: 30px;
+        }
+</style>

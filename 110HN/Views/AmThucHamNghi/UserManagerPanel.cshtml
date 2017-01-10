@@ -1,0 +1,10 @@
+﻿<div>
+    @using (Html.BeginForm("UserManagerPanel","AmThucHamNghi",FormMethod.Post))
+    {
+        @Html.ValidationSummary(true)
+        <div style=""><p style="font-size:30px;color:white;font-family:'UVN Ben Xuan';text-align:center;">@HttpContext.Current.Session["hoten"].ToString()</p></div>
+        <div style="margin-top: 15px"><a style="color: white; text-decoration: none; height: 30px; background-color: #ff195f; border-radius: 15px; margin-top: 5px; padding: 4px 10px 4px 10px; box-shadow: 1px 1px 1px 1px black;" href="@Url.Action("XemThongTin","KhachHang")">Thông tin</a></div>
+        <div style="margin-top: 15px"><a style="color:white;text-decoration:none;height:30px;background-color:#ff195f;border-radius:15px;margin-top:5px;padding:4px 10px 4px 10px;box-shadow:1px 1px 1px 1px black;" href="@Url.Action("DoiMatKhau","KhachHang")">Đổi mật khẩu</a></div>
+        <div><button style="border-radius:15px;height:30px;margin-top:11px;" name="button" value="logout" type="submit">Log Out</button></div>
+    }
+</div>

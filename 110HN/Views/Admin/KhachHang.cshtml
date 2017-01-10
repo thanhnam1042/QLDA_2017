@@ -1,0 +1,126 @@
+﻿@using DALTWEB_110HN.Models
+@using PagedList.Mvc
+@model PagedList.PagedList<KHACHHANG>
+
+@{
+    ViewBag.Title = "KhachHang";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style>
+    table.KH {
+        font-family: 'Times New Roman';
+        font-size: 20px;
+        width: 98%;
+        margin-left: 1%;
+        margin-top: 30px;
+    }
+</style>
+<div style="background-color: #00ff96; border-radius: 10px; box-shadow: 1px 1px 1px 1px black; text-align: center; width: 150px; margin-top: 50px; margin-left: 5%">
+    <p><a style="color:black;" href="@Url.Action("createKhachHang","Admin")">Tạo mới</a></p>
+</div>
+<table class="KH" border="1">
+    <tr>
+        <th>
+            idKhach
+        </th>
+        <th>
+            hoten
+        </th>
+        <th>
+            diachi
+        </th>
+        <th>
+            sodienthoai
+        </th>
+        <th>
+            username
+        </th>
+        <th>
+            pwd
+        </th>
+        <th>
+            email
+        </th>
+        <th>
+            dob
+        </th>
+        <th>
+            charges
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.idKhach
+        </td>
+        <td>
+            @item.hoten
+        </td>
+        <td>
+            @item.diachi
+        </td>
+        <td>
+            @item.sodienthoai
+        </td>
+        <td>
+            @item.username
+        </td>
+        <td>
+            @item.pwd
+        </td>
+        <td>
+            @item.email
+        </td>
+        <td>
+            @item.dob
+        </td>
+        <td>
+            @item.charges.Value.ToString("N0")
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "editKhachHang", new {id = item.idKhach }) |
+            @Html.ActionLink("Delete", "deleteKhachHang", new { id = item.idKhach })
+        </td>
+    </tr>
+}
+
+</table>
+<div style="font-family:benxuan;font-size:25px;color:white;">Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount</div>
+<div class="index-select">
+    @Html.PagedListPager(Model, Page => Url.Action("KhachHang", new { page = Page }))
+</div>
+<style>
+    div.index-select ul {
+        width: 50%;
+        text-align: center;
+    }
+
+    div.index-select li {
+        float: left;
+        display: inline;
+        margin: 3px;
+        box-shadow: 1px 1px 1px 1px black;
+        width: 30px;
+        text-align: center;
+        border-radius: 5px;
+        height: 30px;
+    }
+
+        div.index-select li:hover {
+            cursor: pointer;
+            transition: 0.4s;
+            background-color: #ff195f;
+        }
+
+        div.index-select li a {
+            color: white;
+            font-family: 'UVN Ben Xuan';
+            font-size: 30px;
+            text-decoration: none;
+            width: 30px;
+            height: 30px;
+        }
+</style>

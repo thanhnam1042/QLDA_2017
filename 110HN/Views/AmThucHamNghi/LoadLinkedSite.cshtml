@@ -1,0 +1,10 @@
+﻿@model IEnumerable<DALTWEB_110HN.Models.LIENKET>
+
+<div class="linked-side-section-1">
+    <div class="linked-side-section-item" id="linked-side-section-item-title"><p>Các trang liên kết</p></div>
+    <!--Linked Site load here-->
+    @foreach (var item in Model)
+    {
+        <div class="linked-side-section-item"><a href="@item.hrefLK"><p>@item.tenLK</p></a></div>
+    }
+</div>

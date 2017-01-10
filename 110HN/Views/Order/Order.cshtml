@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Order";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<table class="paynow">
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        <tr>
+            <td id="hd"><p style="font-family: 'UVN Ben Xuan'; font-size: 25px; color: #fff;">Họ và tên:   </p></td>
+            <td><input style="" type="text" name="name" /></td>
+        </tr>
+        <tr>
+            <td id="hd"><p style="font-family: 'UVN Ben Xuan'; font-size: 25px; color: #fff;">Số điện thoại:   </p></td>
+            <td><input style="" type="text" name="sodienthoai" /></td>
+        </tr>
+        <tr>
+            <td id="hd"><p style="font-family: 'UVN Ben Xuan'; font-size: 25px; color: #fff;">Địa chỉ:   </p></td>
+            <td><input style="" type="text" name="diachi" /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input style="width:90%;margin-left:5%;height:30px;box-shadow:1px 1px 1px 1px black;background-color:#ff195f;border-radius:5px;text-align:center;" type="submit" value="Đặt hàng ngay" /></td>
+        </tr>
+
+    }
+</table>

@@ -1,0 +1,7 @@
+﻿@model IEnumerable<DALTWEB_110HN.Models.QUANGCAO>
+<div class="ads-item">
+    @foreach (var item in Model)
+    {
+        <div id="@item.idQC"><a href="@item.hrefLK"><img src="../Content/Images/QC/@item.imgQC" /></a></div>
+    }
+</div>

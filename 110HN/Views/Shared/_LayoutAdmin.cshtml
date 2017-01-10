@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <link href="~/Content/Admin/style_admin.css" rel="stylesheet" />
+    <link href="~/Content/Admin/loaisp_admin.css" rel="stylesheet" />
+    <link href="~/Content/Admin/nav_admin.css" rel="stylesheet" />
+    <script src="~/Scripts/Admin/nav.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div id="mySidenav" class="sidenav">
+        
+        <div class="userinfo" style="width:100%;margin-bottom: 10px;height: 100px;background-color:#333;">
+            <div style="text-align: center;color: #00ff96;font-size: 25px;height: 70px">@Html.Action("ShowCurrentUser")</div>
+            <div style="width: 50%;margin-left: 25%;text-align: center;background-color: black;border-radius: 10px"><a style="padding: 0;" href="@Url.Action("LogOut","Admin")">Đăng xuất</a></div>
+        </div>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="item"><div class="img"><a href="@Url.Action("LoaiSP","Admin")"><img src="/Content/Images/Admin/Function/loaisp.png"></a></div><div class="func"><a href="@Url.Action("LoaiSP","Admin")">Loại SP</a></div></div>
+
+        <div class="item"><div class="img"><a href="@Url.Action("SanPham","Admin")"><img src="/Content/Images/Admin/Function/sanpham.png"></a></div><div class="func"><a href="@Url.Action("SanPham","Admin")">Sản phẩm</a></div></div>
+
+        <div class="item"><div class="img"><a href="@Url.Action("KhachHang","Admin")"><img src="/Content/Images/Admin/Function/khachhang.png"></a></div><div class="func"><a href="@Url.Action("KhacHang","Admin")">Khách hàng</a></div></div>
+
+        <div class="item"><div class="img"><a href="@Url.Action("QuangCao","Admin")"><img src="/Content/Images/Admin/Function/quangcao.png"></a></div><div class="func"><a href="@Url.Action("QuangCao","Admin")">Quảng cáo</a></div></div>
+
+        <div class="item"><div class="img"><a href="@Url.Action("KhuyenMai","Admin")"><img src="/Content/Images/Admin/Function/khuyenmai.png"></a></div><div class="func"><a href="@Url.Action("KhuyenMai","Admin")">Khuyến mãi</a></div></div>
+
+        <div class="item"><div class="img"><a href="@Url.Action("HoPTac","Admin")"><img src="/Content/Images/Admin/Function/dvhoptac.png"></a></div><div class="func"><a href="@Url.Action("HopTac","Admin")">Hợp tác</a></div></div>
+
+        <div class="item"><div class="img"><a href="@Url.Action("LienKet","Admin")"><img src="/Content/Images/Admin/Function/lienket.png"></a></div><div class="func"><a href="@Url.Action("LienKet","Admin")">Liên kết</a></div></div>
+
+        <div class="item"><div class="img"><a href="@Url.Action("DonDatHang","Admin")"><img src="/Content/Images/Admin/Function/dondathang.png"></a></div><div class="func"><a href="@Url.Action("DonDatHang","Admin")">Đơn đặt hàng</a></div></div>
+
+        <div class="item"><div class="img"><a href="@Url.Action("QuanTriVien","Admin")"><img src="/Content/Images/Admin/Function/quantrivien.png"></a></div><div class="func"><a href="@Url.Action("QuanTriVien", "Admin")">Quản trị viên</a></div></div>
+    </div>
+
+    <div id="main">
+        <div class="mobile-nav">
+            <img onclick="openNav()" src="/Content/Images/Admin/Icon/nav.png">
+        </div>
+        <div class="top-block">
+            <div class="title">Administrator Panel</div>
+        </div>
+
+
+        <!---->
+        <div class="left-block">
+            <div class="left-top-block">
+                @Html.Action("Auth","Admin")
+            </div>
+
+            <div class="left-bottom-block">
+                <div>
+                    <a href="@Url.Action("LoaiSP","Admin")"><img src="/Content/Images/Admin/Function/loaisp.png"></a>
+                    <a href="@Url.Action("SanPham","Admin")"><img src="/Content/Images/Admin/Function/sanpham.png"></a>
+                    <a href="@Url.Action("KhachHang","Admin")"><img src="/Content/Images/Admin/Function/khachhang.png"></a>
+                    <a href="@Url.Action("KhuyenMai","Admin")"><img src="/Content/Images/Admin/Function/khuyenmai.png"></a>
+                    <a href="@Url.Action("DonDatHang","Admin")"><img src="/Content/Images/Admin/Function/dondathang.png"></a>
+                    <a href="@Url.Action("QuangCao","Admin")"><img src="/Content/Images/Admin/Function/quangcao.png"></a>
+                    <a href="@Url.Action("LienKet","Admin")"><img src="/Content/Images/Admin/Function/lienket.png"></a>
+                    <a href="@Url.Action("HopTac","Admin")"><img src="/Content/Images/Admin/Function/dvhoptac.png"></a>
+                    <a href="@Url.Action("QuanTriVien", "Admin")"><img src="/Content/Images/Admin/Function/quantrivien.png"></a>
+                </div>
+            </div>
+
+        </div>
+
+        <!---->
+        <!---->
+        <div class="center-content">
+            @RenderBody()
+        </div>
+    </div>
+    <!---->
+</body>
+</html>

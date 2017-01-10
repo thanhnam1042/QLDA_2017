@@ -1,0 +1,27 @@
+﻿<script>
+        $(document).ready(function () {
+            setTimeout(
+              function () {
+                  window.location.href = "@Url.Action("Index","Admin")";
+              }, 3000);
+        });
+</script>
+<style>
+    .loadingImg {
+        width: 100%;
+        height: 100%;
+        left: 70px;
+        top: 250px;
+        position: fixed;
+    }
+</style>
+<link href="~/Content/Admin/loading.css" rel="stylesheet" />
+<div class="loadingImg">
+    <div class="cssload-container">
+        <div class="cssload-lt"></div>
+        <div class="cssload-rt"></div>
+        <div class="cssload-lb"></div>
+        <div class="cssload-rb"></div>
+    </div>
+</div>
+

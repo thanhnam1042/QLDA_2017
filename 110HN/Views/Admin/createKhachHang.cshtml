@@ -1,0 +1,113 @@
+﻿@model DALTWEB_110HN.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "createKhachHang";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style>
+    div.create {
+        width: 80%;
+        margin-left: 10%;
+    }
+
+        div.create input#btn {
+            background-color: #00ff96;
+            box-shadow: 1px 1px 1px 1px black;
+            border-radius: 5px;
+        }
+
+        div.create div#btn {
+            margin-top: 10px;
+            width: 130px;
+            text-align: center;
+            background-color: #333;
+            box-shadow: 1px 1px 1px 1px black;
+            border-radius: 5px;
+        }
+</style>
+<div class="create">
+    @using (Html.BeginForm("init_createKhachHang", "Admin", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>KHACHHANG</h4>
+            <hr />
+            @Html.ValidationSummary(true)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.hoten, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.hoten)
+                    @Html.ValidationMessageFor(model => model.hoten)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.diachi, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.diachi)
+                    @Html.ValidationMessageFor(model => model.diachi)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.sodienthoai, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.sodienthoai)
+                    @Html.ValidationMessageFor(model => model.sodienthoai)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.username, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.username)
+                    @Html.ValidationMessageFor(model => model.username)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.pwd, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.pwd)
+                    @Html.ValidationMessageFor(model => model.pwd)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.email, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.email)
+                    @Html.ValidationMessageFor(model => model.email)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.dob, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="date" name="dob"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.charges, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.charges)
+                    @Html.ValidationMessageFor(model => model.charges)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input id="btn" type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Quay trở lại", "KhachHang")
+    </div>
+</div>

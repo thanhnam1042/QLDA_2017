@@ -1,0 +1,11 @@
+﻿@model IEnumerable<DALTWEB_110HN.Models.DVHOPTAC>
+
+<div class="linked-side-section-2">
+    <div class="linked-side-section-item" id="linked-side-section-item-title"><p>Đơn vị hợp tác</p></div>
+    <!--Linked Site load here-->
+    @foreach (var item in Model)
+    {
+        <div class="linked-side-section-item"><a href="#"><p>@item.tenDVHT</p></a></div>
+    }
+</div>
+

@@ -1,0 +1,552 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="comtam110hamnghiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CTDONDATHANG">
+          <Key>
+            <PropertyRef Name="idCTDDH" />
+          </Key>
+          <Property Name="idCTDDH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idSP" Type="int" />
+          <Property Name="slSP" Type="int" />
+          <Property Name="idDDH" Type="int" />
+          <Property Name="tenKH" Type="nvarchar" MaxLength="50" />
+          <Property Name="diachiKH" Type="nvarchar" MaxLength="50" />
+          <Property Name="sodienthoaiKH" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="DONDATHANG">
+          <Key>
+            <PropertyRef Name="idDDH" />
+          </Key>
+          <Property Name="idDDH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ngayxuatDDH" Type="smalldatetime" />
+          <Property Name="tonggiatri" Type="bigint" />
+          <Property Name="idKhach" Type="int" />
+          <Property Name="idKM" Type="int" />
+        </EntityType>
+        <EntityType Name="DVHOPTAC">
+          <Key>
+            <PropertyRef Name="idDVHT" />
+          </Key>
+          <Property Name="idDVHT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tenDVHT" Type="nvarchar" MaxLength="50" />
+          <Property Name="motaDVHT" Type="nvarchar" MaxLength="300" />
+          <Property Name="diachi" Type="nvarchar" MaxLength="50" />
+          <Property Name="sodienthoai" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="KHACHHANG">
+          <Key>
+            <PropertyRef Name="idKhach" />
+          </Key>
+          <Property Name="idKhach" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="hoten" Type="nvarchar" MaxLength="50" />
+          <Property Name="diachi" Type="nvarchar" MaxLength="50" />
+          <Property Name="sodienthoai" Type="varchar" MaxLength="20" />
+          <Property Name="username" Type="varchar" MaxLength="30" />
+          <Property Name="pwd" Type="varchar" MaxLength="30" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="dob" Type="smalldatetime" />
+          <Property Name="charges" Type="bigint" />
+        </EntityType>
+        <EntityType Name="KHUYENMAI">
+          <Key>
+            <PropertyRef Name="idKM" />
+          </Key>
+          <Property Name="idKM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tenKM" Type="nvarchar" MaxLength="50" />
+          <Property Name="motaKM" Type="nvarchar" MaxLength="200" />
+          <Property Name="giatriKM" Type="float" />
+          <Property Name="startKM" Type="smalldatetime" />
+          <Property Name="endKM" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="LIENKET">
+          <Key>
+            <PropertyRef Name="idLK" />
+          </Key>
+          <Property Name="idLK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tenLK" Type="nvarchar" MaxLength="30" />
+          <Property Name="hrefLK" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="LOAISP">
+          <Key>
+            <PropertyRef Name="idLoai" />
+          </Key>
+          <Property Name="idLoai" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tenLoai" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="QUANGCAO">
+          <Key>
+            <PropertyRef Name="idQC" />
+          </Key>
+          <Property Name="idQC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tenQC" Type="nvarchar" MaxLength="30" />
+          <Property Name="vitriQC" Type="int" />
+          <Property Name="imgQC" Type="varchar" MaxLength="30" />
+          <Property Name="hrefLK" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="QUANTRIVIEN">
+          <Key>
+            <PropertyRef Name="idQTV" />
+          </Key>
+          <Property Name="idQTV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="30" />
+          <Property Name="pwd" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="SANPHAM">
+          <Key>
+            <PropertyRef Name="idSP" />
+          </Key>
+          <Property Name="idSP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ten" Type="nvarchar" MaxLength="50" />
+          <Property Name="gia" Type="bigint" />
+          <Property Name="mota" Type="nvarchar" MaxLength="500" />
+          <Property Name="img" Type="varchar" MaxLength="50" />
+          <Property Name="anhien" Type="bit" />
+          <Property Name="idLoai" Type="int" />
+        </EntityType>
+        <Association Name="FK_CTDDH_DDH">
+          <End Role="DONDATHANG" Type="Self.DONDATHANG" Multiplicity="0..1" />
+          <End Role="CTDONDATHANG" Type="Self.CTDONDATHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DONDATHANG">
+              <PropertyRef Name="idDDH" />
+            </Principal>
+            <Dependent Role="CTDONDATHANG">
+              <PropertyRef Name="idDDH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTDDH_SANPHAM">
+          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="0..1" />
+          <End Role="CTDONDATHANG" Type="Self.CTDONDATHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SANPHAM">
+              <PropertyRef Name="idSP" />
+            </Principal>
+            <Dependent Role="CTDONDATHANG">
+              <PropertyRef Name="idSP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DDH_KH">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+          <End Role="DONDATHANG" Type="Self.DONDATHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="idKhach" />
+            </Principal>
+            <Dependent Role="DONDATHANG">
+              <PropertyRef Name="idKhach" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DDH_KM">
+          <End Role="KHUYENMAI" Type="Self.KHUYENMAI" Multiplicity="0..1" />
+          <End Role="DONDATHANG" Type="Self.DONDATHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHUYENMAI">
+              <PropertyRef Name="idKM" />
+            </Principal>
+            <Dependent Role="DONDATHANG">
+              <PropertyRef Name="idKM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SANPHAM_LOAISP">
+          <End Role="LOAISP" Type="Self.LOAISP" Multiplicity="0..1" />
+          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAISP">
+              <PropertyRef Name="idLoai" />
+            </Principal>
+            <Dependent Role="SANPHAM">
+              <PropertyRef Name="idLoai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="comtam110hamnghiModelStoreContainer">
+          <EntitySet Name="CTDONDATHANG" EntityType="Self.CTDONDATHANG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DONDATHANG" EntityType="Self.DONDATHANG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DVHOPTAC" EntityType="Self.DVHOPTAC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KHACHHANG" EntityType="Self.KHACHHANG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KHUYENMAI" EntityType="Self.KHUYENMAI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LIENKET" EntityType="Self.LIENKET" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOAISP" EntityType="Self.LOAISP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QUANGCAO" EntityType="Self.QUANGCAO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QUANTRIVIEN" EntityType="Self.QUANTRIVIEN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SANPHAM" EntityType="Self.SANPHAM" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CTDDH_DDH" Association="Self.FK_CTDDH_DDH">
+            <End Role="DONDATHANG" EntitySet="DONDATHANG" />
+            <End Role="CTDONDATHANG" EntitySet="CTDONDATHANG" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTDDH_SANPHAM" Association="Self.FK_CTDDH_SANPHAM">
+            <End Role="SANPHAM" EntitySet="SANPHAM" />
+            <End Role="CTDONDATHANG" EntitySet="CTDONDATHANG" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DDH_KH" Association="Self.FK_DDH_KH">
+            <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+            <End Role="DONDATHANG" EntitySet="DONDATHANG" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DDH_KM" Association="Self.FK_DDH_KM">
+            <End Role="KHUYENMAI" EntitySet="KHUYENMAI" />
+            <End Role="DONDATHANG" EntitySet="DONDATHANG" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SANPHAM_LOAISP" Association="Self.FK_SANPHAM_LOAISP">
+            <End Role="LOAISP" EntitySet="LOAISP" />
+            <End Role="SANPHAM" EntitySet="SANPHAM" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="comtam110hamnghiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CTDONDATHANG">
+          <Key>
+            <PropertyRef Name="idCTDDH" />
+          </Key>
+          <Property Name="idCTDDH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idSP" Type="Int32" />
+          <Property Name="slSP" Type="Int32" />
+          <Property Name="idDDH" Type="Int32" />
+          <Property Name="tenKH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="diachiKH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sodienthoaiKH" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DONDATHANG" Relationship="Self.FK_CTDDH_DDH" FromRole="CTDONDATHANG" ToRole="DONDATHANG" />
+          <NavigationProperty Name="SANPHAM" Relationship="Self.FK_CTDDH_SANPHAM" FromRole="CTDONDATHANG" ToRole="SANPHAM" />
+        </EntityType>
+        <EntityType Name="DONDATHANG">
+          <Key>
+            <PropertyRef Name="idDDH" />
+          </Key>
+          <Property Name="idDDH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ngayxuatDDH" Type="DateTime" Precision="0" />
+          <Property Name="tonggiatri" Type="Int64" />
+          <Property Name="idKhach" Type="Int32" />
+          <Property Name="idKM" Type="Int32" />
+          <NavigationProperty Name="CTDONDATHANGs" Relationship="Self.FK_CTDDH_DDH" FromRole="DONDATHANG" ToRole="CTDONDATHANG" />
+          <NavigationProperty Name="KHACHHANG" Relationship="Self.FK_DDH_KH" FromRole="DONDATHANG" ToRole="KHACHHANG" />
+          <NavigationProperty Name="KHUYENMAI" Relationship="Self.FK_DDH_KM" FromRole="DONDATHANG" ToRole="KHUYENMAI" />
+        </EntityType>
+        <EntityType Name="DVHOPTAC">
+          <Key>
+            <PropertyRef Name="idDVHT" />
+          </Key>
+          <Property Name="idDVHT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tenDVHT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="motaDVHT" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="diachi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sodienthoai" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="KHACHHANG">
+          <Key>
+            <PropertyRef Name="idKhach" />
+          </Key>
+          <Property Name="idKhach" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="hoten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="diachi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sodienthoai" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="username" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="pwd" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dob" Type="DateTime" Precision="0" />
+          <Property Name="charges" Type="Int64" />
+          <NavigationProperty Name="DONDATHANGs" Relationship="Self.FK_DDH_KH" FromRole="KHACHHANG" ToRole="DONDATHANG" />
+        </EntityType>
+        <EntityType Name="KHUYENMAI">
+          <Key>
+            <PropertyRef Name="idKM" />
+          </Key>
+          <Property Name="idKM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tenKM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="motaKM" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="giatriKM" Type="Double" />
+          <Property Name="startKM" Type="DateTime" Precision="0" />
+          <Property Name="endKM" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="DONDATHANGs" Relationship="Self.FK_DDH_KM" FromRole="KHUYENMAI" ToRole="DONDATHANG" />
+        </EntityType>
+        <EntityType Name="LIENKET">
+          <Key>
+            <PropertyRef Name="idLK" />
+          </Key>
+          <Property Name="idLK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tenLK" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="hrefLK" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="LOAISP">
+          <Key>
+            <PropertyRef Name="idLoai" />
+          </Key>
+          <Property Name="idLoai" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tenLoai" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SANPHAMs" Relationship="Self.FK_SANPHAM_LOAISP" FromRole="LOAISP" ToRole="SANPHAM" />
+        </EntityType>
+        <EntityType Name="QUANGCAO">
+          <Key>
+            <PropertyRef Name="idQC" />
+          </Key>
+          <Property Name="idQC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tenQC" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="vitriQC" Type="Int32" />
+          <Property Name="imgQC" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="hrefLK" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="QUANTRIVIEN">
+          <Key>
+            <PropertyRef Name="idQTV" />
+          </Key>
+          <Property Name="idQTV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="pwd" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SANPHAM">
+          <Key>
+            <PropertyRef Name="idSP" />
+          </Key>
+          <Property Name="idSP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gia" Type="Int64" />
+          <Property Name="mota" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="img" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="anhien" Type="Boolean" />
+          <Property Name="idLoai" Type="Int32" />
+          <NavigationProperty Name="CTDONDATHANGs" Relationship="Self.FK_CTDDH_SANPHAM" FromRole="SANPHAM" ToRole="CTDONDATHANG" />
+          <NavigationProperty Name="LOAISP" Relationship="Self.FK_SANPHAM_LOAISP" FromRole="SANPHAM" ToRole="LOAISP" />
+        </EntityType>
+        <Association Name="FK_CTDDH_DDH">
+          <End Role="DONDATHANG" Type="Self.DONDATHANG" Multiplicity="0..1" />
+          <End Role="CTDONDATHANG" Type="Self.CTDONDATHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DONDATHANG">
+              <PropertyRef Name="idDDH" />
+            </Principal>
+            <Dependent Role="CTDONDATHANG">
+              <PropertyRef Name="idDDH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTDDH_SANPHAM">
+          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="0..1" />
+          <End Role="CTDONDATHANG" Type="Self.CTDONDATHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SANPHAM">
+              <PropertyRef Name="idSP" />
+            </Principal>
+            <Dependent Role="CTDONDATHANG">
+              <PropertyRef Name="idSP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DDH_KH">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+          <End Role="DONDATHANG" Type="Self.DONDATHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="idKhach" />
+            </Principal>
+            <Dependent Role="DONDATHANG">
+              <PropertyRef Name="idKhach" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DDH_KM">
+          <End Role="KHUYENMAI" Type="Self.KHUYENMAI" Multiplicity="0..1" />
+          <End Role="DONDATHANG" Type="Self.DONDATHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHUYENMAI">
+              <PropertyRef Name="idKM" />
+            </Principal>
+            <Dependent Role="DONDATHANG">
+              <PropertyRef Name="idKM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SANPHAM_LOAISP">
+          <End Role="LOAISP" Type="Self.LOAISP" Multiplicity="0..1" />
+          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAISP">
+              <PropertyRef Name="idLoai" />
+            </Principal>
+            <Dependent Role="SANPHAM">
+              <PropertyRef Name="idLoai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="comtam110hamnghiEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CTDONDATHANGs" EntityType="Self.CTDONDATHANG" />
+          <EntitySet Name="DONDATHANGs" EntityType="Self.DONDATHANG" />
+          <EntitySet Name="DVHOPTACs" EntityType="Self.DVHOPTAC" />
+          <EntitySet Name="KHACHHANGs" EntityType="Self.KHACHHANG" />
+          <EntitySet Name="KHUYENMAIs" EntityType="Self.KHUYENMAI" />
+          <EntitySet Name="LIENKETs" EntityType="Self.LIENKET" />
+          <EntitySet Name="LOAISPs" EntityType="Self.LOAISP" />
+          <EntitySet Name="QUANGCAOs" EntityType="Self.QUANGCAO" />
+          <EntitySet Name="QUANTRIVIENs" EntityType="Self.QUANTRIVIEN" />
+          <EntitySet Name="SANPHAMs" EntityType="Self.SANPHAM" />
+          <AssociationSet Name="FK_CTDDH_DDH" Association="Self.FK_CTDDH_DDH">
+            <End Role="DONDATHANG" EntitySet="DONDATHANGs" />
+            <End Role="CTDONDATHANG" EntitySet="CTDONDATHANGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTDDH_SANPHAM" Association="Self.FK_CTDDH_SANPHAM">
+            <End Role="SANPHAM" EntitySet="SANPHAMs" />
+            <End Role="CTDONDATHANG" EntitySet="CTDONDATHANGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DDH_KH" Association="Self.FK_DDH_KH">
+            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+            <End Role="DONDATHANG" EntitySet="DONDATHANGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DDH_KM" Association="Self.FK_DDH_KM">
+            <End Role="KHUYENMAI" EntitySet="KHUYENMAIs" />
+            <End Role="DONDATHANG" EntitySet="DONDATHANGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SANPHAM_LOAISP" Association="Self.FK_SANPHAM_LOAISP">
+            <End Role="LOAISP" EntitySet="LOAISPs" />
+            <End Role="SANPHAM" EntitySet="SANPHAMs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="comtam110hamnghiModelStoreContainer" CdmEntityContainer="comtam110hamnghiEntities">
+          <EntitySetMapping Name="CTDONDATHANGs">
+            <EntityTypeMapping TypeName="comtam110hamnghiModel.CTDONDATHANG">
+              <MappingFragment StoreEntitySet="CTDONDATHANG">
+                <ScalarProperty Name="idCTDDH" ColumnName="idCTDDH" />
+                <ScalarProperty Name="idSP" ColumnName="idSP" />
+                <ScalarProperty Name="slSP" ColumnName="slSP" />
+                <ScalarProperty Name="idDDH" ColumnName="idDDH" />
+                <ScalarProperty Name="tenKH" ColumnName="tenKH" />
+                <ScalarProperty Name="diachiKH" ColumnName="diachiKH" />
+                <ScalarProperty Name="sodienthoaiKH" ColumnName="sodienthoaiKH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DONDATHANGs">
+            <EntityTypeMapping TypeName="comtam110hamnghiModel.DONDATHANG">
+              <MappingFragment StoreEntitySet="DONDATHANG">
+                <ScalarProperty Name="idDDH" ColumnName="idDDH" />
+                <ScalarProperty Name="ngayxuatDDH" ColumnName="ngayxuatDDH" />
+                <ScalarProperty Name="tonggiatri" ColumnName="tonggiatri" />
+                <ScalarProperty Name="idKhach" ColumnName="idKhach" />
+                <ScalarProperty Name="idKM" ColumnName="idKM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DVHOPTACs">
+            <EntityTypeMapping TypeName="comtam110hamnghiModel.DVHOPTAC">
+              <MappingFragment StoreEntitySet="DVHOPTAC">
+                <ScalarProperty Name="idDVHT" ColumnName="idDVHT" />
+                <ScalarProperty Name="tenDVHT" ColumnName="tenDVHT" />
+                <ScalarProperty Name="motaDVHT" ColumnName="motaDVHT" />
+                <ScalarProperty Name="diachi" ColumnName="diachi" />
+                <ScalarProperty Name="sodienthoai" ColumnName="sodienthoai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KHACHHANGs">
+            <EntityTypeMapping TypeName="comtam110hamnghiModel.KHACHHANG">
+              <MappingFragment StoreEntitySet="KHACHHANG">
+                <ScalarProperty Name="idKhach" ColumnName="idKhach" />
+                <ScalarProperty Name="hoten" ColumnName="hoten" />
+                <ScalarProperty Name="diachi" ColumnName="diachi" />
+                <ScalarProperty Name="sodienthoai" ColumnName="sodienthoai" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="pwd" ColumnName="pwd" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="dob" ColumnName="dob" />
+                <ScalarProperty Name="charges" ColumnName="charges" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KHUYENMAIs">
+            <EntityTypeMapping TypeName="comtam110hamnghiModel.KHUYENMAI">
+              <MappingFragment StoreEntitySet="KHUYENMAI">
+                <ScalarProperty Name="idKM" ColumnName="idKM" />
+                <ScalarProperty Name="tenKM" ColumnName="tenKM" />
+                <ScalarProperty Name="motaKM" ColumnName="motaKM" />
+                <ScalarProperty Name="giatriKM" ColumnName="giatriKM" />
+                <ScalarProperty Name="startKM" ColumnName="startKM" />
+                <ScalarProperty Name="endKM" ColumnName="endKM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LIENKETs">
+            <EntityTypeMapping TypeName="comtam110hamnghiModel.LIENKET">
+              <MappingFragment StoreEntitySet="LIENKET">
+                <ScalarProperty Name="idLK" ColumnName="idLK" />
+                <ScalarProperty Name="tenLK" ColumnName="tenLK" />
+                <ScalarProperty Name="hrefLK" ColumnName="hrefLK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOAISPs">
+            <EntityTypeMapping TypeName="comtam110hamnghiModel.LOAISP">
+              <MappingFragment StoreEntitySet="LOAISP">
+                <ScalarProperty Name="idLoai" ColumnName="idLoai" />
+                <ScalarProperty Name="tenLoai" ColumnName="tenLoai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QUANGCAOs">
+            <EntityTypeMapping TypeName="comtam110hamnghiModel.QUANGCAO">
+              <MappingFragment StoreEntitySet="QUANGCAO">
+                <ScalarProperty Name="idQC" ColumnName="idQC" />
+                <ScalarProperty Name="tenQC" ColumnName="tenQC" />
+                <ScalarProperty Name="vitriQC" ColumnName="vitriQC" />
+                <ScalarProperty Name="imgQC" ColumnName="imgQC" />
+                <ScalarProperty Name="hrefLK" ColumnName="hrefLK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QUANTRIVIENs">
+            <EntityTypeMapping TypeName="comtam110hamnghiModel.QUANTRIVIEN">
+              <MappingFragment StoreEntitySet="QUANTRIVIEN">
+                <ScalarProperty Name="idQTV" ColumnName="idQTV" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="pwd" ColumnName="pwd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SANPHAMs">
+            <EntityTypeMapping TypeName="comtam110hamnghiModel.SANPHAM">
+              <MappingFragment StoreEntitySet="SANPHAM">
+                <ScalarProperty Name="idSP" ColumnName="idSP" />
+                <ScalarProperty Name="ten" ColumnName="ten" />
+                <ScalarProperty Name="gia" ColumnName="gia" />
+                <ScalarProperty Name="mota" ColumnName="mota" />
+                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="anhien" ColumnName="anhien" />
+                <ScalarProperty Name="idLoai" ColumnName="idLoai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

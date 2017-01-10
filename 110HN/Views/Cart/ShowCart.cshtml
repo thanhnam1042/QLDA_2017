@@ -1,0 +1,65 @@
+﻿@using DALTWEB_110HN.Models
+@model List<Cart>
+@{
+    ViewBag.Title = "ShowCart";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<script>
+
+    function Increase(MaSP) {
+        var url = "/Cart/UpdateCart_Increase";
+        $.post(url, { masp: MaSP }, function () {
+            alert("Thêm một sản phẩm");
+        });
+        setTimeout(
+              function () {
+                  window.location.href = "@Url.Action("ShowCart","Cart")";
+              }, 0);
+    }
+    function Decrease(MaSP) {
+        var url = "/Cart/UpdateCart_Decrease";
+        $.post(url, { masp: MaSP }, function () {
+            alert("Bỏ bớt một sản phẩm");
+        });
+        setTimeout(
+              function () {
+                  window.location.href = "@Url.Action("ShowCart","Cart")";
+              }, 0);
+    }
+    function Remove(MaSP) {
+        var url = "/Cart/UpdateCart_Remove";
+        $.post(url, { masp: MaSP }, function () {
+            alert("Xóa một sản phẩm");
+        });
+        setTimeout(
+              function () {
+                  window.location.href = "@Url.Action("ShowCart","Cart")";
+              }, 0);
+    }
+</script>
+<table class="cart" align="center" border="1" style="border-radius:15px;background-color:#fcf8cd;border:1px solid black;color:#268000" >
+    <tr style="text-align:center;font-weight:bold">
+        <td>Mã SP</td>
+        <td>Tên SP</td>
+        <td>Hình mô tả</td>
+        <td>Số lượng</td>
+        <td>Đơn giá</td>
+        <td>Thành tiền</td>
+    </tr>
+    @foreach (var item in Model)
+    { 
+        <tr style="text-align:center;font-weight:bold">
+            <td>@item.iMaSP</td>
+            <td>@item.sTenSP</td>
+            <td style="width:200px"><img style="width:100%;padding:0;margin:0;" src="../HinhSP/@item.sImgSP" /></td>
+            <td style="width:160px"><a href="javascript:Decrease(@item.iMaSP)" class="tru"><img style="width:30px;float:left" src="../Content/Images/minus.png" /></a><div style="float:left">@item.iSoLuong</div><a href="javascript:Increase(@item.iMaSP)" class="cong"><img style="width: 30px; float: left;" src="../Content/Images/plus.png" /></a><a href="javascript:Remove(@item.iMaSP)">Xóa món ăn</a></td>
+            <td>@String.Format("{0:0,0}",item.dGia) vnd</td>
+            <td>@String.Format("{0:0,0}",item.dThanhTien) vnd</td>
+        </tr>
+    }
+    <tr>
+        <td colspan="3">Số lượng sản phẩm : @ViewBag.TongSL </td>
+        <td colspan="3">Tổng cộng : @String.Format("{0:0,0}",ViewBag.TongTien) vnd</td>
+    </tr>
+</table>
+<div style="width:30%;margin-left:35%;font-size:30px;background-color:#ff195f;border-radius:15px;box-shadow:2px 2px 2px 2px black;font-family:'UVN Ben Xuan';text-align:center;margin-top:20px;" ><a style="text-decoration:none;color:white;" href="@Url.Action("Order","Order")">Đến trang đặt hàng</a></div>

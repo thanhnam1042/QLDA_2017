@@ -1,0 +1,105 @@
+
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s
+}
+.sidenav img {
+    width:50px;
+    border-radius: 10px;
+}
+.sidenav img:hover {
+    box-shadow:1px 1px 1px 1px #00ff96;
+}
+.sidenav div.item {
+    width: 100%;
+    clear: both;
+    margin-bottom:5px;
+}
+.sidenav div.item div.img {
+    margin-top:5px;
+    width: 40%;
+    float:left;
+}
+.sidenav div.item div.func {
+    color: white;
+    font-size: 25px;
+    width: 60%;
+    float:left;
+    opacity:0.6;
+}
+.sidenav div.item div.func:hover {
+    transition:0.8s;
+    opacity:1.0;
+}
+.sidenav div.item div.func a{
+    margin-top:20px;
+    padding:0;
+    color: white;
+    font-size: 25px;
+}
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+@media screen and (max-height:870px) {
+
+    .sidenav div.item {
+        width: 80%;
+        clear: both;
+        margin-left:20%;
+    }
+    .sidenav div.item div.img {
+        display:none;
+    }
+    .sidenav div.item div.func {
+        width: 80%;
+        float:left;
+        margin-top: 5px;
+        background-color:#333;
+        text-align:center;
+        padding-top:2px;
+        padding-bottom:2px;
+        border-radius:5px;
+    }
+        .sidenav div.item div.func a {
+            padding:0;
+            margin:0;
+            color: white;
+            font-size: 20px;
+        }
+    .sidenav div.item div.func:hover {
+    transition:0.8s;
+    opacity:1.0;
+    box-shadow:1px 1px 1px 1px #00ff96;
+}
+}

@@ -1,0 +1,23 @@
+﻿<div>
+    <div><p style="color:green;text-align:center;">@ViewBag.Thongbao</p></div>
+    <div style="font-family: 'UVN Ben Xuan'; font-size: 40px; color: #ff195f;"><p style="">Đăng nhập</p></div>
+    <table>
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true)
+            <tr>
+                <td><p style="font-family: 'UVN Ben Xuan'; font-size: 30px; color: #fff;">Username   </p></td>
+                <td><input style="" type="text" name="username" /></td>
+            </tr>
+            <tr>
+                <td><p style="font-family: 'UVN Ben Xuan'; font-size: 30px; color: #fff;">Password   </p></td>
+                <td><input style="" type="password" name="pwd" /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input style="font-family:benxuan;font-size:20px" type="submit" value="Đăng nhập" /></td>
+            </tr>
+        }
+    </table>
+    <a style="width: 99%; margin-left: 0.5%;font-size:18px;color:white;text-align:center" href="@Url.Action("Register","KhachHang")">Chưa có tài khoản ? Đăng ký miễn phí ngay.</a>
+</div>

@@ -1,0 +1,70 @@
+﻿@model DALTWEB_110HN.Models.DONDATHANG
+
+@{
+    ViewBag.Title = "editDonDatHang";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    div.ctn {
+        width: 50%;
+        margin-left: 25%;
+        text-align: left;
+    }
+</style>
+<div class="ctn">
+    @using (Html.BeginForm("saveDonDatHang", "Admin", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>DONDATHANG</h4>
+            <hr />
+            @Html.ValidationSummary(true)
+            <div class="form-group">
+                <div class="col-md-10">
+                    @Html.HiddenFor(model=>model.idDDH)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ngayxuatDDH, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ngayxuatDDH)
+                    @Html.ValidationMessageFor(model => model.ngayxuatDDH)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.tonggiatri, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.tonggiatri)
+                    @Html.ValidationMessageFor(model => model.tonggiatri)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.idKhach, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("idKhach")
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.idKM, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("idKM")
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Quay trở lại", "DonDatHang")
+    </div>
+</div>
